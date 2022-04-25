@@ -24,7 +24,7 @@ stages:
           - task: InvokeRESTAPI@1
             displayName: "Quality Gate check with SerivceNow"
             inputs:
-              connectionType: 'connectedServiceName'
+              connectionType: 'ServiceNow DevOps'
               serviceConnection: 'ServiceNow Loomsales demo for Schweiz'
               method: 'POST'
               body: |
