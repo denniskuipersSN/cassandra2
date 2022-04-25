@@ -33,7 +33,7 @@ stages:
                    "branchName": "$(build.sourceBranchName)"
                 }
               waitForCompletion: 'true'        
-          - task: HelmDeploy@1
+          - task: HelmDeploy@0
             displayName: 'Deploying All Images'
             inputs:
               connectionType: 'Kubernetes Service Connection'
