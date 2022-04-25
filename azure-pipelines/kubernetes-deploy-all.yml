@@ -21,10 +21,10 @@ stages:
         displayName : 'Change Control ServiceNow'
         pool : server
         steps:
-          - task: InvokeRESTAPI@1
+          - task: ServiceNow.vss-services-servicenow-devops.serviceNowDevOps-server-change-acceleration-task.ServiceNow-DevOps-Server-Change-Acceleration@1
             inputs:
               connectionType: 'ServiceNow DevOps'
-              serviceConnection: 'ServiceNow Loomsales demo for Schweiz'
+              connectedServiceName: 'ServiceNow Loomsales demo for Schweiz'
               method: 'POST'
               body: |
                 { 
