@@ -16,12 +16,23 @@ pool:
   vmImage: ubuntu-latest
 
 stages:  
-
   #### Deploy All Images Stagee ####
   - stage: Deploy_All_Images
     jobs:
       - job: Deploy_All_Images
         steps:
+          - task: InvokeRESTAPI@1
+            inputs:
+              connectionType: 'connectedServiceName'
+              serviceConnection: 'ServiceNow Loomsales demo for Schweiz'
+              method: 'POST'
+              body: |
+                { 
+                   "buildNumber": "$(build.buildId)",
+                   "isMultiBranch": "true",
+                   "branchName": "$(build.sourceBranchName)"
+                }
+              waitForCompletion: 'true'        
           - task: HelmDeploy@0 
             displayName: 'Deploying All Images'
             inputs:
