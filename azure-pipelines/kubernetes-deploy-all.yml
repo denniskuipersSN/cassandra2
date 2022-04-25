@@ -18,7 +18,7 @@ stages:
   - stage: Deploy_All_Images
     jobs:
       - job: Change_Request 
-        displayname : 'Change Control ServiceNow'
+        displayName : 'Change Control ServiceNow'
         pool : server
         steps:
           - task: InvokeRESTAPI@1
