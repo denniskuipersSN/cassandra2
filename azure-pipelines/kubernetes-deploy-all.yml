@@ -12,16 +12,16 @@ variables:
   serviceNamespace: $(SERVICE_NAMESPACE)
   repoPrefix: '$(REPO_PREFIX)'
 
-pool:
-  vmImage: ubuntu-latest
 
 stages:  
   #### Deploy All Images Stagee ####
   - stage: Deploy_All_Images
     jobs:
-      - job: Deploy_All_Images
+      - job: Change Request 
+        pool : server
         steps:
           - task: InvokeRESTAPI@1
+            displayName: "Quality Gate check with SerivceNow"
             inputs:
               connectionType: 'connectedServiceName'
               serviceConnection: 'ServiceNow Loomsales demo for Schweiz'
@@ -32,7 +32,11 @@ stages:
                    "isMultiBranch": "true",
                    "branchName": "$(build.sourceBranchName)"
                 }
-              waitForCompletion: 'true'        
+              waitForCompletion: 'true'         
+      - job: Deploy_All_Images
+        pool:
+           vmImage: ubuntu-latest
+        steps:
           - task: HelmDeploy@0
             displayName: 'Deploying All Images'
             inputs:
