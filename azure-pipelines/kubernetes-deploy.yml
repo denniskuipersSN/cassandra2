@@ -40,7 +40,7 @@ stages:
           inputs:
             testResultsFormat: 'NUnit'
             testResultsFiles: '**/TEST-*.xml'
-            searchFolder: '$(System.DefaultWorkingDirectory)/tests/$(serviceName)'
+            searchFolder: '$(System.DefaultWorkingDirectory)'
             testRunTitle: '$(serviceName)-1.0.$(build.buildId)-tests'
           displayName: 'Publishing Results'
 
