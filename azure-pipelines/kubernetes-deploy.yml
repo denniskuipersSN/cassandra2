@@ -73,8 +73,8 @@ stages:
   ##############################################################################
   ###                       SERVICENOW DEVOPS CHANGE                         ###
   ##############################################################################
-   - stage: DevOps_Change
-     jobs:
+  - stage: DevOps_Change
+    jobs:
        - job: DevOps_Change
          pool: server
          steps:
